@@ -1,4 +1,4 @@
-# 🧭 README — IA de Triagem de Patentes&#x20;
+# 🧭 README — Similaridade Semântica para Triagem de Patentes;
 
 ## 1) O que é
 
@@ -895,15 +895,15 @@ python avaliar_metricas.py --arquivo rotulos.jsonl --k 10
 
 ## 15) Exemplo visual
 
+Adicione imagens na pasta `assets/` e referencie aqui:
+
 **UI (Streamlit)**
 
-![UI](<assets/Captura de tela 1.png>)
+**Resposta da API**
 
-![UI](<assets/Captura de tela 2.png>)
+> Substitua pelos seus prints. No GitHub, arraste as imagens para a pasta `assets/`.
 
-![UI](<assets/Captura de tela 3.png>)
-
-![UI](<assets/Captura de tela 4.png>)
+---
 
 ## 16) Links úteis
 
