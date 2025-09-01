@@ -157,7 +157,8 @@ LENS_API_KEY=SEU_TOKEN_DA_LENS
 
 ## Base local (formato) & Regra de ouro
 
-Arquivo **`base_patentes.json`** contém **lista** de objetos no formato:
+Arquivo **`base_patentes.json`** contém **lista** de objetos no formatoArquivo: base_patentes.json — contém uma lista de objetos no formato abaixo. Baixar **`base_patentes.json`** em:
+https://drive.google.com/file/d/144_DDZIJCmMNE82ZSqQF40R5IIkBxvwg/view?usp=sharing:
 
 ```json
 {
