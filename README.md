@@ -268,17 +268,6 @@ LENS_API_KEY=SEU_TOKEN_DA_LENS
 
 > Políticas e limites podem mudar. Consulte a documentação/painel da Lens.
 
-**Modelo de e‑mail (se precisar):**
-
-```
-Assunto: Solicitação de acesso à Lens Patent API
-
-Olá,
-Sou [Seu Nome], [Instituição/Empresa]. Estou desenvolvendo um protótipo acadêmico de triagem de patentes por similaridade semântica e gostaria de solicitar acesso à Lens Patent API (somente leitura), com uso limitado para pesquisa.
-Obrigado!
-[Seu contato]
-```
-
 ### Rodar a coleta (script pronto)
 
 ```bash
