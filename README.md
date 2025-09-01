@@ -1,4 +1,4 @@
-# 🧭 README — Similaridade Semântica para Triagem de Patentes;
+ 🧭 README — Similaridade Semântica para Triagem de Patentes;
 
 > **Objetivo**: dado o texto das **reivindicações (claims)** de uma invenção, o sistema retorna as **N patentes mais similares** por **similaridade de cosseno** entre **embeddings** (modelo multilíngue). Há três modos: **Local (JSON)**, **Híbrido (Local + APIs externas/Lens)** e **Via API FastAPI**.
 
@@ -462,11 +462,3 @@ data/
 * FastAPI: [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 * Streamlit: [https://docs.streamlit.io/](https://docs.streamlit.io/)
 * Lens API: [https://docs.lens.org/](https://docs.lens.org/)
-
----
-
-## Licença, contato & contribuições
-
-* **Licença**: escolha e informe (ex.: MIT ou Apache‑2.0).
-* **Contato**: [isabela.andradeaguiar1@gmail.com](mailto:isabela.andradeaguiar1@gmail.com)
-* **Contribuir**: faça *fork* → *branch* (`feat/minha-feature`) → *PR* com escopo claro e, se possível, testes.
