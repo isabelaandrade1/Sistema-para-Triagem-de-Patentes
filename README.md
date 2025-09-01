@@ -209,6 +209,95 @@ Arquivo **`base_patentes.json`** (lista de objetos):
 
 ---
 
+## 8.1) Antes de publicar no GitHub (limpar dados locais)
+
+Antes de subir o repositório, **remova qualquer dado privado ou pesado**:
+
+* Apague a base local e arquivos derivados:
+
+  ```bash
+  # Windows (PowerShell)
+  del base_patentes.json 2>$null
+  # Linux/macOS
+  rm -f base_patentes.json
+  ```
+* Opcional: mantenha **apenas um exemplo mínimo** (ex.: `base_20_patentes.json`) para demonstração, mas **não o use em produção**. No código, altere `BASE_PATH`/`CAMINHO_ARQUIVO` para esse arquivo de amostra quando quiser rodar o projeto sem dados reais.
+* Garanta que segredos e dumps **não** sejam versionados. Sugestão de `.gitignore`:
+
+  ```gitignore
+  # Segredos
+  .env
+
+  # Bases e artefatos locais
+  base_patentes.json
+  data/
+  relatorios/
+  *.jsonl
+  *.parquet
+  *.csv
+  ```
+
+> Dica: se você já versionou algum desses arquivos por engano, remova do histórico com `git rm --cached <arquivo>` e faça um novo commit.
+
+---
+
+## 8.2) Como solicitar acesso à **Lens API** (para busca/coleta externa)
+
+1. **Crie uma conta** em *lens.org* (gratuita) e entre na área de **desenvolvedores / API**.
+2. **Solicite uma chave de API** (token Bearer). A Lens pode exigir um formulário simples com o **uso pretendido** (pesquisa/ensino/protótipo) e **limites** aceitos de uso.
+3. Após aprovado, você receberá um **API key/token**. Guarde-o em local seguro e **não versionado**.
+4. Configure seu token no arquivo `.env` na raiz do projeto:
+
+   ```env
+   LENS_API_KEY=SEU_TOKEN_DA_LENS
+   ```
+
+> Observação: a política da Lens (modelos de acesso, limites, rotas) pode mudar ao longo do tempo. Verifique a documentação oficial e o painel da sua conta ao solicitar o acesso.
+
+**Modelo de e‑mail (caso precise solicitar por suporte):**
+
+```
+Assunto: Solicitação de acesso à Lens Patent API
+
+Olá, 
+Sou [Seu Nome], [Instituição/Empresa]. Estou desenvolvendo um protótipo acadêmico de triagem de patentes por similaridade semântica e gostaria de solicitar acesso à Lens Patent API (apenas leitura), com uso limitado para pesquisa. 
+Obrigado!
+[Seu contato]
+```
+
+---
+
+## 8.3) Coletar patentes via Lens (script incluso)
+
+Com a chave configurada, use o script `coleta_patentes.py` para **hidratar** a base local:
+
+```bash
+# ativa o ambiente e roda a coleta
+python coleta_patentes.py
+```
+
+O script:
+
+* Faz buscas paginadas usando termos genéricos aleatórios (para diversidade),
+* Busca detalhes por `lens_id`,
+* Limpa texto e **gera embedding L2** das *claims*,
+* Salva/atualiza `base_patentes.json` continuamente (checkpoint a cada \~100 itens),
+* Respeita `429/Retry-After` com espera automática.
+
+**Parâmetros editáveis no arquivo** (valores padrão já no código):
+
+* `TOTAL_DESEJADO`: volume alvo de patentes (ex.: `10000`).
+* `TAMANHO_PAGINA`: tamanho do lote por requisição (ex.: `50`).
+* `TERMOS_ALEATORIOS`: lista de termos usados na *simple\_query\_string*.
+
+> Se a execução for interrompida, o script **retoma** a partir do que já existe em `base_patentes.json`.
+
+**Re-hidratação / reprocessamento**
+
+* Caso mude o **modelo** de embedding, rode `recalcular_embeddings.py` para recalcular os vetores a partir das *claims* já armazenadas.
+
+---
+
 ## 9) Streamlit (UI)
 
 * Modo **Local (JSON)**, **Híbrido** (se `.env` presente) ou **Via API FastAPI** (aponta para `http://127.0.0.1:8000`).
