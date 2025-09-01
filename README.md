@@ -1,4 +1,4 @@
- 🧭 README — Similaridade Semântica para Triagem de Patentes;
+# 🧭 README — Similaridade Semântica para Triagem de Patentes;
 
 > **Objetivo**: dado o texto das **reivindicações (claims)** de uma invenção, o sistema retorna as **N patentes mais similares** por **similaridade de cosseno** entre **embeddings** (modelo multilíngue). Há três modos: **Local (JSON)**, **Híbrido (Local + APIs externas/Lens)** e **Via API FastAPI**.
 
@@ -268,17 +268,6 @@ LENS_API_KEY=SEU_TOKEN_DA_LENS
 
 > Políticas e limites podem mudar. Consulte a documentação/painel da Lens.
 
-**Modelo de e‑mail (se precisar):**
-
-```
-Assunto: Solicitação de acesso à Lens Patent API
-
-Olá,
-Sou [Seu Nome], [Instituição/Empresa]. Estou desenvolvendo um protótipo acadêmico de triagem de patentes por similaridade semântica e gostaria de solicitar acesso à Lens Patent API (somente leitura), com uso limitado para pesquisa.
-Obrigado!
-[Seu contato]
-```
-
 ### Rodar a coleta (script pronto)
 
 ```bash
@@ -462,3 +451,10 @@ data/
 * FastAPI: [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 * Streamlit: [https://docs.streamlit.io/](https://docs.streamlit.io/)
 * Lens API: [https://docs.lens.org/](https://docs.lens.org/)
+
+---
+
+## Licença, contato & contribuições
+* **Licença**: MIT — uso livre para fins acadêmicos, educacionais e prototipagem.
+* **Contato**: [isabela.andradeaguiar1@gmail.com](mailto:isabela.andradeaguiar1@gmail.com)
+* **Contribuir**: faça *fork* → *branch* (`feat/minha-feature`) → *PR* com escopo claro e, se possível, testes.
